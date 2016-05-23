@@ -2,4 +2,6 @@
 
 ## Hosted by the JavaScript NY Meetup.
 
-#### Will add more links later. For now, clone this repo and [complete the exercises](./scalability-and-memory/) following along with the presentation.
+#### Clone this repo and [complete the exercises](./scalability-and-memory/) following along with the presentation.
+
+## You can view the [slides](http://www.slideshare.net/HaseebQureshi5/cs-fundamentals-scalability-and-memory), or follow along with the video (to be posted soon!)
