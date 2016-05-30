@@ -6,5 +6,5 @@ Modify `recursions.js`.
 
 
 ## Running the Tests
-Open `SpecRunner.html`.
+Open `SpecRunner.html` in your browser.
 
