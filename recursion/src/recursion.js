@@ -8,8 +8,6 @@ var expect = chai.expect;
  * @returns {string}
  */
 function reverse(str) {
-
-
 }
 
 /**
@@ -18,8 +16,6 @@ function reverse(str) {
  * @returns {string}
  */
 function reverseIter(str) {
-    
-
 }
 
 
@@ -34,21 +30,21 @@ function reverseIter(str) {
  * Reverses a string recursively
  */
 describe('reverse', function() {
-    it('should correctly reverses a single character', function() {
+    it('correctly reverses a single character', function() {
         expect(reverse('a')).to.equal('a');
     });
 
-    it('should correctly reverses "ab"', function() {
+    it('correctly reverses "ab"', function() {
         expect(reverse('ab')).to.equal('ba');
     });
 
-    it('should reverse a longer string', function() {
+    it('reverses a longer string', function() {
         expect(reverse('this is a longer string'))
             .to
             .equal('gnirts regnol a si siht');
     });
 
-    it('should use recursion to reverse a string', function() {
+    it('uses recursion to reverse a string', function() {
         reverse = sinon.spy(reverse);
         reverse('hello');
         expect(reverse.callCount).to.be.above(3);
@@ -59,15 +55,15 @@ describe('reverse', function() {
  * Reverses a string iteratively
  */
 describe('reverseIter', function() {
-    it('should correctly reverses a single character', function() {
+    it('correctly reverses a single character', function() {
         expect(reverseIter('a')).to.equal('a');
     });
 
-    it('should correctly reverses "ab"', function() {
+    it('correctly reverses "ab"', function() {
         expect(reverseIter('ab')).to.equal('ba');
     });
 
-    it('should reverse a longer string', function() {
+    it('reverses a longer string', function() {
         expect(reverseIter('king of the world'))
             .to
             .equal('dlrow eht fo gnik');
