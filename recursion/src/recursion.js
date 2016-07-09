@@ -77,7 +77,26 @@ function isPalindromeIter(str) {
 
 }
 
+/**
+ * Write a RECURSIVE function that finds the position of a target value within a sorted array.
+ * It should returns either the index of the location in the array,
+ * or -1 if the array did not contain the target value.
+ * @param {Object[]} arr
+ * @param {number} target
+ */
+function binarySearch(arr, target) {
 
+}
+
+/**
+ * Now do it ITERATIVELY
+ * @param {Object[]} arr
+ * @param {number} target
+ */
+function binarySearchIter(arr, target) {
+
+
+}
 
 /* ========================================================
                       T E S T S
@@ -237,5 +256,78 @@ describe('isPalindromeIter', function() {
 
     it('recognizes "almostomla" as a non-palindrome', function() {
         expect(isPalindromeIter('almostomla')).to.equal(false);
+    });
+});
+
+describe('binarySearch', function() {
+    var singleItemArr = [9];
+
+    var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
+        41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+    it('returns 0 as the index if the target value is first in a sorted array', function() {
+        expect(binarySearch(primes, 2)).to.equal(0);
+    });
+
+    it('returns the correct index of the target value\'s location in a sorted array', function() {
+        expect(binarySearch(primes, 71)).to.equal(19);
+    });
+
+    it('returns -1 when the target value is not in a sorted array', function() {
+        expect(binarySearch(primes, 4)).to.equal(-1);
+    });
+
+    it('returns the correct index of the target value\'s location in an array with one item', function() {
+        expect(binarySearch(singleItemArr, 9)).to.equal(0);
+    });
+
+    it('returns -1 when the target value is not in an array with one item', function() {
+        expect(binarySearch(singleItemArr, 8)).to.equal(-1);
+    });
+
+    it('uses recursion to find the index', function() {
+        var bestCase = 2; // Run one extra time due to our tests
+        var worseCase = Math.ceil(Math.log(primes.length) + 1);
+
+        binarySearch = sinon.spy(binarySearch);
+        binarySearch(primes, 97);
+        expect(binarySearch.callCount).to.be.within(bestCase, worseCase);
+    });
+
+    it('uses recursion to find the index for an array with 8 elements', function() {
+        var array = [1, 2, 3, 4, 5, 6, 7, 8];
+        var bestCase = 2;
+        var worseCase = Math.ceil(Math.log(array.length) + 1);
+
+        binarySearch = sinon.spy(binarySearch);
+        binarySearch(array, 3);
+        expect(binarySearch.callCount).to.be.within(bestCase, worseCase);
+    });
+});
+
+describe('binarySearchIter', function() {
+    var singleItemArr = [11];
+
+    var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
+        41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97];
+
+    it('returns 0 as the index if the target value is first in a sorted array', function() {
+        expect(binarySearchIter(primes, 2)).to.equal(0);
+    });
+
+    it('returns the correct index of the target value\'s location in a sorted array', function() {
+        expect(binarySearchIter(primes, 3)).to.equal(1);
+    });
+
+    it('returns -1 when the target value is not in a sorted array', function() {
+        expect(binarySearchIter(primes, 99)).to.equal(-1);
+    });
+
+    it('returns the correct index of the target value\'s location in an array with one item', function() {
+        expect(binarySearchIter(singleItemArr, 11)).to.equal(0);
+    });
+
+    it('returns -1 when the target value is not in an array with one item', function() {
+        expect(binarySearchIter(singleItemArr, 8)).to.equal(-1);
     });
 });
