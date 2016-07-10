@@ -1,0 +1,17 @@
+{
+  "name": "recursion",
+  "description": "A set of exercises for learning recursion.",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Haseeb-Qureshi/cs-fundamentals",
+  "author": {
+    "name": "Haseeb Qureshi",
+    "email": "dogishead@gmail.com",
+    "url": "http://haseebq.com"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "sinon": "^1.17.4"
+  }
+}
