@@ -1,9 +1,27 @@
 'use strict';
 
-var expect = chai.expect;
+/**
+ * When you take the factorial of a number, you multiply that number by each number between itself and 1.
+ * So factorial(5) equals 5 * 4 * 3 * 2 * 1, or 120.
+ * Write a function that computes factorial RECURSIVELY.
+ * @param {number} n
+ * @returns {number}
+ */
+function factorial(n) {
+
+}
 
 /**
- * Write a function that takes a string and reverses it RECURSIVELY
+ * Now do it ITERATIVELY.
+ * @param {number} n
+ * @returns {number}
+ */
+function factorialIter(n) {
+
+}
+
+/**
+ * Write a function that takes a string and reverses it RECURSIVELY.
  * @param {string} str
  * @returns {string}
  */
@@ -12,7 +30,7 @@ function reverse(str) {
 }
 
 /**
- * Now do it ITERATIVELY
+ * Now do it ITERATIVELY.
  * @param {string} str
  * @returns {string}
  */
@@ -23,7 +41,8 @@ function reverseIter(str) {
 /**
  * The Fibonacci Sequence is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
  * The next number is found by adding up the two numbers before it.
- * Write a function that returns the nth Fibonacci number in the the Fibonacci sequence RECURSIVELY.
+ * Write a function that returns the nth Fibonacci number in the the Fibonacci sequence.
+ * Compute it RECURSIVELY.
  * @param {number} n - term number
  */
 function fib(n) {
@@ -31,7 +50,7 @@ function fib(n) {
 }
 
 /**
- * Now do it ITERATIVELY
+ * Now do it ITERATIVELY.
  * @param {number} n - term number
  */
 function fibIter(n) {
@@ -39,28 +58,9 @@ function fibIter(n) {
 }
 
 /**
- * When you take the factorial of a number, you multiply that number by each number between itself and one.
- * So the factorial of 5 is equal to 5 * 4 * 3 * 2 * 1, or 120.
- * Write a function that finds the factorial of n number RECURSIVELY.
- * @param {number} n
- * @returns {number}
- */
-function factorial(n) {
-
-}
-
-/**
- * Now do it ITERATIVELY
- * @param {number} n
- * @returns {number}
- */
-function factorialIter(n) {
-
-}
-
-/**
  * A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward or forward.
  * Write a function that returns true if the given string is a palindrome. Otherwise, return false, RECURSIVELY.
+ * Examples of palindromes: mom, dad, racecar.
  * @param {string} str
  * @returns {boolean}
  */
@@ -69,7 +69,7 @@ function isPalindrome(str) {
 }
 
 /**
- * Now do it ITERATIVELY
+ * Now do it ITERATIVELY.
  * @param {string} str
  * @returns {boolean}
  */
@@ -79,8 +79,8 @@ function isPalindromeIter(str) {
 
 /**
  * Write a RECURSIVE function that finds the position of a target value within a sorted array.
- * It should returns either the index of the location in the array,
- * or -1 if the array did not contain the target value.
+ * It should returns either the index of the location in the array, or -1 if the array did not contain that target value.
+ * You can look up how the binary search algorithm works on Wikipedia: https://en.wikipedia.org/wiki/Binary_search_algorithm
  * @param {Object[]} arr
  * @param {number} target
  */
@@ -89,7 +89,7 @@ function binarySearch(arr, target) {
 }
 
 /**
- * Now do it ITERATIVELY
+ * Now implement binary search ITERATIVELY.
  * @param {Object[]} arr
  * @param {number} target
  */
@@ -98,10 +98,59 @@ function binarySearchIter(arr, target) {
 
 }
 
+
 /* ========================================================
                       T E S T S
 # ======================================================== */
 
+
+var expect = window.chai.expect;
+var describe = window.describe;
+var it = window.it;
+var sinon = window.sinon;
+
+
+describe('factorial', function() {
+    it('correctly returns the factorial given the input 0', function() {
+        expect(factorial(0)).to.equal(1);
+    });
+
+    it('correctly returns the factorial given the input 1', function() {
+        expect(factorial(1)).to.equal(1);
+    });
+
+    it('correctly returns the factorial given the input 5', function() {
+        expect(factorial(5)).to.equal(120);
+    });
+
+    it('correctly returns the factorial given the number 13', function() {
+        expect(factorial(13)).to.equal(6227020800);
+    });
+
+    it('uses recursion to find the factorial', function() {
+        factorial = sinon.spy(factorial);
+        factorial(5);
+        expect(factorial.callCount).to.be.above(3);
+    });
+});
+
+describe('factorialIter', function() {
+    it('correctly returns the factorial given the input 0', function() {
+        expect(factorialIter(0)).to.equal(1);
+    });
+
+    it('correctly returns the factorial given the input 1', function() {
+        expect(factorialIter(1)).to.equal(1);
+    });
+
+    it('correctly returns the factorial given the input 5', function() {
+        expect(factorialIter(5)).to.equal(120);
+    });
+
+    it('correctly returns the factorial given the number 13', function() {
+        expect(factorialIter(13)).to.equal(6227020800);
+    });
+});
 
 describe('reverse', function() {
     it('correctly reverses a single character', function() {
@@ -156,8 +205,8 @@ describe('fib', function() {
 
     it('uses recursion to find the Fibonacci number', function() {
         fib = sinon.spy(fib);
-        fib(4);
-        expect(fib.callCount).to.be.above(4);
+        fib(5);
+        expect(fib.callCount).to.be.above(3);
     });
 });
 
@@ -172,48 +221,6 @@ describe('fibIter', function() {
 
     it('correctly returns the eighth Fibonacci number', function() {
         expect(fibIter(8)).to.equal(13);
-    });
-});
-
-describe('factorial', function() {
-    it('correctly returns the factorial given the input 0', function() {
-        expect(factorial(0)).to.equal(1);
-    });
-
-    it('correctly returns the factorial given the input 1', function() {
-        expect(factorial(1)).to.equal(1);
-    });
-
-    it('correctly returns the factorial given the input 5', function() {
-        expect(factorial(5)).to.equal(120);
-    });
-
-    it('correctly returns the factorial given the number 13', function() {
-        expect(factorial(13)).to.equal(6227020800);
-    });
-
-    it('uses recursion to find the factorial', function() {
-        factorial = sinon.spy(factorial);
-        factorial(4);
-        expect(factorial.callCount).to.be.above(4);
-    });
-});
-
-describe('factorialIter', function() {
-    it('correctly returns the factorial given the input 0', function() {
-        expect(factorialIter(0)).to.equal(1);
-    });
-
-    it('correctly returns the factorial given the input 1', function() {
-        expect(factorialIter(1)).to.equal(1);
-    });
-
-    it('correctly returns the factorial given the input 5', function() {
-        expect(factorialIter(5)).to.equal(120);
-    });
-
-    it('correctly returns the factorial given the number 13', function() {
-        expect(factorialIter(13)).to.equal(6227020800);
     });
 });
 
@@ -236,8 +243,8 @@ describe('isPalindrome', function() {
 
     it('uses recursion to check whether a word is a palindrome', function() {
         isPalindrome = sinon.spy(isPalindrome);
-        isPalindrome('madam');
-        expect(isPalindrome.callCount).to.be.above(2);
+        isPalindrome('amanaplanacanalpanama');
+        expect(isPalindrome.callCount).to.be.above(5);
     });
 });
 
@@ -258,6 +265,7 @@ describe('isPalindromeIter', function() {
         expect(isPalindromeIter('almostomla')).to.equal(false);
     });
 });
+
 
 describe('binarySearch', function() {
     var singleItemArr = [9];
