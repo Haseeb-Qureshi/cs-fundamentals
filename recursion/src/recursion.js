@@ -1,3 +1,6 @@
+/* Recursion occurs whenever a functions calls itself
+*/
+
 'use strict';
 
 /**
